@@ -33,7 +33,7 @@ bool stringCompare(const char arr1[], const char arr2[]) {
     else {
         // Compare each character in the arrays:
         for (int i = 0; arr1[i] != '\0'; ++i) {
-            if (arr1[i] - arr2[i] != 0) {
+            if (arr1[i] != arr2[i]) {
                 return false;
             }
         }
