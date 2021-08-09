@@ -1,4 +1,6 @@
 // Swap two integers using XOR.
+// Can also be done with:
+// void std::swap(T& a, T& b);
 #include <iostream>
 
 int main() {
