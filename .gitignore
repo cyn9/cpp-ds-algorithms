@@ -32,6 +32,9 @@ bin/
 # Ignore UI files (if exists):
 *.ui
 
+# Ignore .DS_Store
+.DS_Store
+
 # Ignore C++ output source .o and .out files:
 *.o
 *.out
