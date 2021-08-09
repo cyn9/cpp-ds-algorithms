@@ -1,0 +1,69 @@
+# create ~/.gitignore
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+### Above combination will ignore all files without extension ###
+
+# Ignore files with extension `.class` & `.sm`:
+*.class
+*.sm
+*.exe
+
+# Ignore `bin` dir:
+bin/
+# or
+*/bin/*
+
+# Unignore all `.jar` in `bin` dir:
+!*/bin/*.jar
+
+# Ignore all `library.jar` in `bin` dir:
+*/bin/library.jar
+
+# VSCode:
+.vscode/
+
+# Ignore UI files (if exists):
+*.ui
+
+# Ignore C++ output source .o and .out files:
+*.o
+*.out
+
+# Ignore image files:
+*.png
+
+# Ignore Python related:
+*.pyc
+*.pyo
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Distribution / packaging
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# CSV atasets
+*.csv
+
+# TXT files
+*.txt
