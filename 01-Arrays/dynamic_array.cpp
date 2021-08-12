@@ -19,6 +19,8 @@ class DynamicArray {
         DynamicArray() : DynamicArray(1) {}
         DynamicArray(std::size_t capacity) : m_capacity {capacity} {
             m_nextIndex = 0;
+            assert(capacity > 0);
+            
             m_data = new int[capacity];
             m_data[m_nextIndex] = 0;
         }
@@ -48,6 +50,7 @@ class DynamicArray {
 
         // Class methods:
         void insert(const int &e) {
+            // If the array is full, double its size:
             if (m_nextIndex == m_capacity) {
                 int* temp = new int[2 * m_capacity];
 
@@ -58,13 +61,9 @@ class DynamicArray {
                 m_data = temp;
 
                 m_capacity *= 2;
+            }
 
-                // Add element after doubling the capacity.
-                m_data[m_nextIndex++] = e;
-            }
-            else {
-                m_data[m_nextIndex++] = e;
-            }
+            m_data[m_nextIndex++] = e;
         }
 
         void insert(const int &e, int index) {
@@ -121,7 +120,7 @@ int main() {
     arr1.insert(40);
     arr1.insert(50);
 
-    std::cout << "\narr1: ";
+    std::cout << "arr1: ";
     arr1.print();
 
     // Testing copying:
