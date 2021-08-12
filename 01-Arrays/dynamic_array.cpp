@@ -1,4 +1,12 @@
 #include <iostream>
+#include <exception>
+
+class ArrayOutOfBoundsException : public std::exception {
+    public:
+        virtual const char *what() const noexcept {
+            return "Array out of bounds: Invalid index.";
+        }
+};
 
 class DynamicArray {
     private:
@@ -65,7 +73,7 @@ class DynamicArray {
             else if (index == m_nextIndex)
                 insert(e);
             else
-                std::cout << "Index not valid.\n";
+                throw ArrayOutOfBoundsException();
         }
 
         int get(int index) const {
@@ -73,10 +81,8 @@ class DynamicArray {
             if (index >= 0 && index < m_capacity) {
                 return m_data[index];
             }
-            else {
-                std::cout << "Index not valid.\n";
-                return -1; // Default value
-            }
+            else
+                throw ArrayOutOfBoundsException();
         }
 
         void print() const {
@@ -125,6 +131,9 @@ int main() {
     arr2.print();
     std::cout << "arr3: ";
     arr3.print();
+
+    // Try to access an element that's out of bounds:
+    std::cout << arr3.get(100) << '\n';
 
     return 0;
 }
