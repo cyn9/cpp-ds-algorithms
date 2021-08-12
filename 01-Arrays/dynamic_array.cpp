@@ -5,7 +5,7 @@
 class ArrayOutOfBoundsException : public std::exception {
     public:
         virtual const char *what() const noexcept {
-            return "Array out of bounds: Invalid index.";
+            return "Array out-of-bounds: Invalid index.";
         }
 };
 
@@ -13,11 +13,11 @@ class DynamicArray {
     private:
         int* m_data;
         int m_nextIndex;
-        int m_capacity;
+        std::size_t m_capacity;
     
     public:
         DynamicArray() : DynamicArray(1) {}
-        DynamicArray(int capacity) : m_capacity {capacity} {
+        DynamicArray(std::size_t capacity) : m_capacity {capacity} {
             m_nextIndex = 0;
             m_data = new int[capacity];
             m_data[m_nextIndex] = 0;
@@ -51,7 +51,7 @@ class DynamicArray {
             if (m_nextIndex == m_capacity) {
                 int* temp = new int[2 * m_capacity];
 
-                for (int i = 0; i < m_capacity; ++i)
+                for (auto i = 0; i < m_capacity; ++i)
                     temp[i] = m_data[i];
 
                 delete[] m_data;
@@ -101,14 +101,14 @@ class DynamicArray {
         void print() const {
             std::cout << "Content of the array: ";
 
-            for (int i = 0; i < m_nextIndex; ++i)
+            for (auto i = 0; i < m_nextIndex; ++i)
                 std::cout << m_data[i] << ' ';
             
             std::cout << '\n';
         }
 
-        inline int capacity()     const { return m_capacity; }
-        inline int getNextIndex() const { return m_nextIndex; }
+        inline std::size_t capacity()     const { return m_capacity; }
+        inline int         getNextIndex() const { return m_nextIndex; }
 };
 
 int main() {
@@ -150,6 +150,11 @@ int main() {
 
     // Try to insert an element to an index that's out of bounds:
     arr3.insert(100, 1000);
+
+    // Capacity tests:
+    std::cout << "Capacity of arr1 = " << arr1.capacity() << ".\n";
+    std::cout << "Capacity of arr2 = " << arr2.capacity() << ".\n";
+    std::cout << "Capacity of arr3 = " << arr3.capacity() << ".\n";
 
     return 0;
 }
