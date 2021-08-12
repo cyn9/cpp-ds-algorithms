@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 #include <exception>
 
 class ArrayOutOfBoundsException : public std::exception {
@@ -46,9 +47,8 @@ class DynamicArray {
         }
 
         // Class methods:
-        void insert(int e) {
+        void insert(const int &e) {
             if (m_nextIndex == m_capacity) {
-                std::cout << "Doubling capacity...\n";
                 int* temp = new int[2 * m_capacity];
 
                 for (int i = 0; i < m_capacity; ++i)
@@ -67,13 +67,19 @@ class DynamicArray {
             }
         }
 
-        void insert(int e, int index) {
+        void insert(const int &e, int index) {
             if (index < m_nextIndex)
                 m_data[index] = e;
             else if (index == m_nextIndex)
                 insert(e);
-            else
-                throw ArrayOutOfBoundsException();
+            else {
+                try { throw ArrayOutOfBoundsException(); }
+                catch (ArrayOutOfBoundsException &e) {
+                    std::cout << e.what() << '\n';
+                }
+
+                std::cout << "Cannot add to index [" << index << "]\n";
+            }
         }
 
         int get(int index) const {
@@ -81,8 +87,15 @@ class DynamicArray {
             if (index >= 0 && index < m_capacity) {
                 return m_data[index];
             }
-            else
-                throw ArrayOutOfBoundsException();
+            else {
+                try { throw ArrayOutOfBoundsException(); }
+                catch (ArrayOutOfBoundsException &e) {
+                    std::cout << e.what() << '\n';
+                }
+
+                std::cout << "Simply returning NaN: ";
+                return std::numeric_limits<int>::quiet_NaN();
+            }
         }
 
         void print() const {
@@ -134,6 +147,9 @@ int main() {
 
     // Try to access an element that's out of bounds:
     std::cout << arr3.get(100) << '\n';
+
+    // Try to insert an element to an index that's out of bounds:
+    arr3.insert(100, 1000);
 
     return 0;
 }
