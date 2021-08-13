@@ -33,7 +33,6 @@ int main() {
 
     std::cout << "After sorting: ";
     print(c, len);
-
 }
 
 void bubbleSort(int arr[], std::size_t N) {
@@ -49,7 +48,7 @@ void bubbleSort(int arr[], std::size_t N) {
             }
         }
 
-        // Run the inner for loop (n-1) times. is_sorted holds the
+        // Run the inner for loop (N-1) times. is_sorted holds the
         // information whether the array is sorted or not. If it's 
         // already sorted, the outer loop will only run once. Hence,
         // it is of O(n).
