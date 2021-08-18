@@ -2,7 +2,7 @@
 int count_zeros(const long &);
 
 int main() {
-    int number {0};
+    long number {0};
 
     std::cout << "Enter a number >> ";
     std::cin >> number;
