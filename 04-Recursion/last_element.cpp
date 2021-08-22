@@ -32,7 +32,9 @@ int main() {
 }
 
 int lastElement(const int arr[], const std::size_t &N, const int &x) {
+    // Check if the subproblem size is zero:
     if (N == 0)        { return  -1; }
+    
     if (arr[N-1] == x) { return N-1; }
 
     return lastElement(arr, N-1, x);
