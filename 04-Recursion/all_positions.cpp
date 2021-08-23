@@ -4,7 +4,6 @@ void print(const int [], const std::size_t &);
 void getIndex(const int [], const std::size_t &, int &, int);
 
 int main() {
-    int index {0};
     int value {0};
     
     std::size_t size {0};
@@ -24,7 +23,7 @@ int main() {
     std::cout << "Enter a value >> ";
     std::cin >> value;
 
-    getIndex(arr, size, value, index);
+    getIndex(arr, size, value, 0);
 
     return 0;
 }
