@@ -26,7 +26,6 @@ int main() {
     // Create nodes statically:
     Node n1(1);
     Node n2(2);
-
     Node* head = &n1;   // Address of the first element in the LL
 
     n1.setNext(&n2);    // Making a connection between nodes n1 and n2.
