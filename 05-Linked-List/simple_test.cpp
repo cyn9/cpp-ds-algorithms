@@ -73,7 +73,7 @@ void print(Node* nodePtr) {
     Node* temp = nodePtr;
 
     std::cout << "Printing linked list >> ";
-    while (temp->getNext() != nullptr) {
+    while (temp != nullptr) {
         std::cout << temp->getData() << "-->";
         temp = temp->getNext();
     }
