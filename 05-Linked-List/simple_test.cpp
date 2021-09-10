@@ -41,7 +41,7 @@ int main() {
     n3->setNext(n4); // Connect n3 and n4.
 
     // Print n3 and n4 data:
-    std::cout << "n3 and n4 >> " << n3->getData() << ", " 
+    std::cout << "n3 and n4 >> " << n3->getData() << "-->" 
                                  << n4->getData() << '\n';
 
     delete n3;
