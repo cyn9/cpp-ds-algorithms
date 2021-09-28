@@ -18,9 +18,9 @@ int main() {
     root->children.push_back(node1);
     root->children.push_back(node2);
 
-    delete[] root;
-    delete[] node1;
-    delete[] node2;
+    delete root;
+    delete node1;
+    delete node2;
 
     return 0;
 }
