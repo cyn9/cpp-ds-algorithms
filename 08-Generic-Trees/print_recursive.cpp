@@ -8,8 +8,6 @@ struct TreeNode {
 
     TreeNode() : TreeNode(0) {}
     TreeNode(T data) : data {data} {}
-
-
 };
 
 template<typename T>
